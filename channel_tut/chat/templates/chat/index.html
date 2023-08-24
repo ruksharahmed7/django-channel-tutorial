@@ -1,0 +1,33 @@
+<!-- chat/templates/chat/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    What chat room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="100"><br>
+    <input id="room-name-submit" type="button" value="Enter">
+
+    <script>
+        //This code snippet selects an HTML element with the ID "room-name-input" and sets the focus on it.
+        document.querySelector('#room-name-input').focus();
+        // Listens for keyup events on the '#room-name-input' element.
+        // If the key pressed is 'Enter', clicks the '#room-name-submit' element.
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.key === 'Enter') {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        // Sets the onclick event handler for the element with the ID 'room-name-submit'.
+        // When the element is clicked, it retrieves the value of the element with the ID 'room-name-input',
+        // and appends it to the current URL pathname, redirecting the user to a new URL.
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>
